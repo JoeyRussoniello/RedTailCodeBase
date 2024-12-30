@@ -51,5 +51,5 @@ def extract_specific_file(zip_file_path, platform, extract_to='.'):
             print("File 'chromedriver.exe' not found in the zip archive.")
 def update_driver(platform):
     download_zip_file(platform)
-    extract_specific_file(r".\chromedriver.zip",platform,"..")
+    extract_specific_file(r".\chromedriver.zip",platform,r"C:\Users\mruss\projects\redtail")
     os.remove(r".\chromedriver.zip")
