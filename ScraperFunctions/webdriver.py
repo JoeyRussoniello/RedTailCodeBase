@@ -6,6 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import logging
+from bs4 import BeautifulSoup
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -48,6 +50,9 @@ class WebDriver:
             traceback.print_exception(exception_type, exception_value, traceback)
         return True
     
+    def set_timeout_limit(self,seconds):
+        self.driver.set_page_load_timeout(seconds)
+    
     def get(self,url):
         self.driver.get(url)
     
@@ -80,7 +85,13 @@ class WebDriver:
     def get_memory(self):
         return self.memory
 
+    def get_page_source(self):
+        return self.driver.page_source
+
+    def get_soup(self):
+        html_content = self.get_page_source()
+        return BeautifulSoup(html_content, 'html.parser')
+
     def close(self):
         self.driver.quit()
         logging.info("WebDriver Closed")
-    
