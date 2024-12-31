@@ -14,6 +14,7 @@ redtail/
 ├── WebScrapers/
 │   ├── MarketSurvey/
 │   ├── WeatherData/
+|   ├── HotelPricingPulls/
 ├── README.md
 ├── chromedriver.exe
 └── requirements.txt
@@ -32,18 +33,25 @@ This directory contains individual web scraper modules, each designed to scrape 
 - `...`: Additional scraper modules for other websites.
 
 ## Usage
-To use the web scrapers, you need to have the required dependencies installed. You can install them using the `requirements.txt` file:
+To easily download all repo code onto your local machine use:
+```git
+git clone https://github.com/JoeyRussoniello/RedTailCodeBase
+cd RedTailCodeBase
+```
 
+To use the web scrapers, you need to have the required dependencies installed. You can install them using the `requirements.txt` file:
 ```sh
 pip install -r requirements.txt
 ```
 
-Each web scraper module can be run individually. For example, to run `MarketSurvey`, use the following command:
+Each web scraper module can be run individually, and scheduled as tasks. For example, to run `MarketSurvey`, use the following command:
 
 ```sh
 cd WebScrapers/MarketSurvey
 python python.py
 ```
+
+#### **NOTE: All webscrapers were developed on a windows OS, and some have `\\` style paths left in the code. These are being gradually replaced with safer os.path.joins, but at the moment, some webscrapers may not function out-of-box on UNIX systems**
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
