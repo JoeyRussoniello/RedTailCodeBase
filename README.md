@@ -23,13 +23,15 @@ redtail/
 ### ScraperFunctions
 This directory contains utility functions and classes that are used to facilitate web scraping tasks. The main components include:
 
-- `webdriver.py`: Contains the `WebDriver` class, which simplifies the use of Selenium WebDriver for web scraping. It includes methods for navigating web pages, finding elements, and extracting content using BeautifulSoup.
+- `webdriver.py`: Contains the `WebDriver` class, which simplifies the use of Selenium WebDriver for web scraping. It includes methods for navigating web pages, finding elements with built-in EC delays, and passing Selenium content to BeautifulSoup.
+- `update_chromedriver.py`: Contains the `update_chromedriver` functions, which sends an HTML request, downloading the most recent version of *chromedriver.exe* in place, overwriting the existing chromedriver with the most recent version
 
 ### WebScrapers
 This directory contains individual web scraper modules, each designed to scrape data from specific websites. The main components include:
 
 - `MarketSurvey/main.py`: A module designed to scrape competitor data from *apartments.com*. It uses the `update_chromedriver` function from `update_chromedriver` to dynamically update the main chromedriver.exe file with each run, ensuring it stays functional dynamically
 - `WeatherData`: A module designed to scrape data from various weather website. It leverages the `WebDriver` class for web scraping tasks using Selenium and bs4.
+- `HotelPricingPulls`: A module designed to scrape pricing data from *booking.com*. It uses the requests module exclusively, with URL modification to send requests, without needing to render JS-loaded content
 - `...`: Additional scraper modules for other websites.
 
 ## Usage
@@ -39,8 +41,25 @@ git clone https://github.com/JoeyRussoniello/RedTailCodeBase
 cd RedTailCodeBase
 ```
 
-To use the web scrapers, you need to have the required dependencies installed. You can install them using the `requirements.txt` file:
-```sh
+#### Setting Up a Virtual Environment
+It is recommended to use a virtual environment to manage dependencies. Follow these steps to create and activate a virtual environment
+
+1. Create a Virtual Environment
+```bash 
+python -m venv.venv
+```
+2. Activate the Virtual Environment
+-On Windows:
+```bash
+.\.venv\Scripts\activate
+```
+-On macOS and Linux:
+```bash
+source .venv/bin/activate
+```
+3. Install Dependencies
+With the virtual environment activated, install the required dependencies using the `requirements.txt` file
+```bash
 pip install -r requirements.txt
 ```
 
