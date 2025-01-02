@@ -49,11 +49,11 @@ It is recommended to use a virtual environment to manage dependencies. Follow th
 python -m venv.venv
 ```
 2. Activate the Virtual Environment
--On Windows:
+- On Windows:
 ```bash
 .\.venv\Scripts\activate
 ```
--On macOS and Linux:
+- On macOS and Linux:
 ```bash
 source .venv/bin/activate
 ```
