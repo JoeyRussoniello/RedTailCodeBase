@@ -1,4 +1,13 @@
 # Red Tail Data Engineering
+# Table of Contents
+1. [Overview](#overview)
+2. [Directory Structure](#directory-structure)
+3. [Configuration](#configuration)
+    a. [Setting up the `.env` file](#setting-up-the-env-file)
+    b. [Configuring a virutal environment](#setting-up-a-virtual-environment)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [Contact](#contact)
 
 ## Overview
 The Redtail project is designed to facilitate web scraping using Selenium and BeautifulSoup. The project is currently organized into two main directories: `ScraperFunctions` and `WebScrapers`, but will change as more reusable classes develop.
@@ -34,14 +43,32 @@ This directory contains individual web scraper modules, each designed to scrape 
 - `HotelPricingPulls`: A module designed to scrape pricing data from *booking.com*. It uses the requests module exclusively, with URL modification to send requests, without needing to render JS-loaded content
 - `...`: Additional scraper modules for other websites.
 
-## Usage
-To easily download all repo code onto your local machine use:
-```git
-git clone https://github.com/JoeyRussoniello/RedTailCodeBase
-cd RedTailCodeBase
-```
+## Configuration
 
-#### Setting Up a Virtual Environment
+### Setting Up the `.env` File
+
+To configure the project, you need to create a `.env` file in the root directory of the project. This file will store environment-specific variables such as paths and credentials. 
+
+**Important:** Do not commit your `.env` file to the repository. It should be included in your `.gitignore` file to keep sensitive information secure.
+
+#### Example `.env` File
+
+Here is an example of what your `.env` file should look like:
+
+```properties
+CHROMEDRIVER_PATH=C:\path\to\your\chromedriver
+```
+With an updating path to your chromedriver instead of the placeholder variable.
+#### Ignoring `.env` with git
+Make sure your `.env` file is listed in a `.gitignore` file to prevent it from being committed to the repository. Your `.gitignore` file should include
+```properties
+.env
+.gitignore
+.venv/
+```
+As well as any large output csv files to avoid overpacking the repository.
+
+### Setting Up a Virtual Environment
 It is recommended to use a virtual environment to manage dependencies. Follow these steps to create and activate a virtual environment
 
 1. Create a Virtual Environment
@@ -62,6 +89,14 @@ With the virtual environment activated, install the required dependencies using 
 ```bash
 pip install -r requirements.txt
 ```
+
+## Usage
+To easily download all repo code onto your local machine use:
+```git
+git clone https://github.com/JoeyRussoniello/RedTailCodeBase
+cd RedTailCodeBase
+```
+Code will not run out-of-the-box unless the dependencies have all been successfully installed. See [Virutal Environment Setup Instructions](#setting-up-a-virtual-environment) for details
 
 Each web scraper module can be run individually, and scheduled as tasks. For example, to run `MarketSurvey`, use the following command:
 

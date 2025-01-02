@@ -2,9 +2,15 @@
 from io import StringIO
 import zipfile
 import os
+from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+
+load_dotenv()
+CHROMEDRIVER_PATH = os.getenv("CHROMEDRIVER_PATH",default = None)
+if CHROMEDRIVER_PATH is None:
+    raise FileExistsError("CHROMEDRIVER_PATH not found in .env file. Ensure that a .env file has been configured with a CHROMEDRIVER_PATH variable")
 
 def get_update_url(platform):
     #Find the most recent chromedriver download link from https://googlechromelabs.github.io/chrome-for-testing/#stable
@@ -51,5 +57,5 @@ def extract_specific_file(zip_file_path, platform, extract_to='.'):
             print("File 'chromedriver.exe' not found in the zip archive.")
 def update_driver(platform):
     download_zip_file(platform)
-    extract_specific_file(r".\chromedriver.zip",platform,r"C:\Users\mruss\projects\redtail")
+    extract_specific_file(r".\chromedriver.zip",platform,CHROMEDRIVER_PATH)
     os.remove(r".\chromedriver.zip")
