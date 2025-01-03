@@ -133,4 +133,6 @@ for _, row in input_df.iterrows():
     logging.info(f"Initializing Search for: {hwv_prop} - {competitor}")
     output = expand_df(output,get_month_out(url_structure,hwv_prop,competitor))
 
-output.to_csv('hwv_competitors.csv',index=False,header=True,mode='a')
+OUTPUT_PATH = 'output.csv'
+output.to_csv(OUTPUT_PATH,index=False,header=False,mode='a')
+logging.info(f'Data saved to {OUTPUT_PATH}')
