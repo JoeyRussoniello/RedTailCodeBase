@@ -47,7 +47,9 @@ class WebDriver:
     def __exit__(self,exception_type, exception_value, traceback):
         self.close()
         if exception_type is not None:
-            traceback.print_exception(exception_type, exception_value, traceback)
+            print("\nExecution type:", exception_type)
+            print("\nExecution value:", exception_value)
+            print("\nTraceback:", traceback)
         return True
     
     def set_timeout_limit(self,seconds):
@@ -63,20 +65,27 @@ class WebDriver:
         if wait:
             WebDriverWait(self.driver, wait).until(EC.presence_of_element_located((By.ID, id)))
         return self.driver.find_element(By.ID,id)
-    
-    def find_element_by_css(self,class_name,wait = False):
-        if wait:
-            WebDriverWait(self.driver, wait).until(EC.presence_of_element_located((By.CLASS_NAME, class_name)))
-        return self.driver.find_element(By.CSS_SELECTOR,class_name)
-    
     def find_elements_by_id(self,id,wait = None):
         if wait:
             WebDriverWait(self.driver, wait).until(EC.presence_of_element_located((By.ID, id)))
         return self.driver.find_elements(By.ID,id)
     
+    def find_element_by_css(self,class_name,wait = False):
+        if wait:
+            WebDriverWait(self.driver, wait).until(EC.presence_of_element_located((By.CSS_SELECTOR, class_name)))
+        return self.driver.find_element(By.CSS_SELECTOR,class_name)
     def find_elements_by_css(self,class_name,wait = None):
         if wait:
             WebDriverWait(self.driver, wait).until(EC.presence_of_element_located((By.CSS_SELECTOR, class_name)))
+        return self.driver.find_elements(By.CSS_SELECTOR,class_name)
+    
+    def find_element_by_class(self,class_name,wait = None):
+        if wait:
+            WebDriverWait(self.driver,wait).until(EC.presence_of_element_located((By.CLASS_NAME,class_name)))
+        return self.driver.find_element(By.CLASS_NAME,class_name)
+    def find_elements_by_class(self,class_name,wait = None):
+        if wait:
+            WebDriverWait(self.driver,wait).until(EC.presence_of_element_located((By.CLASS_NAME,class_name)))
         return self.driver.find_elements(By.CLASS_NAME,class_name)
     
     def hold_values(self,values):
