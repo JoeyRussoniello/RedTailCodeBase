@@ -73,7 +73,7 @@ It is recommended to use a virtual environment to manage dependencies. Follow th
 
 1. Create a Virtual Environment
 ```bash 
-python -m venv.venv
+python -m venv .venv
 ```
 2. Activate the Virtual Environment
 - On Windows:
