@@ -39,6 +39,7 @@ while True:
 
 N_COMPS = int_input("How many competitors would you like to find?: ")
 N_DAYS = int_input("How many days out would you like to gather data for?: ")
+N_WORKERS = int_input("How many parallel workers would like to use? (increases speed a computational cost): ")
 
 while True:
     headless_response = input("Would you like the web-browser to be displayed on your machine? (y/n): ").lower().strip()
@@ -141,7 +142,7 @@ OUTPUT_FILE = os.path.join("Acquisitions",CSV_LABEL + "_compset.csv")
 df = get_compset(CSV_LABEL,TARGET_AREA,N_COMPS,HEADLESS)
 
 #Scrape the pricing for the compset using bs4 and the requests module
-pricing = hs.get_n_days_from_csv(OUTPUT_FILE,N_DAYS)
+pricing = hs.get_n_days_from_csv(OUTPUT_FILE,N_DAYS,num_workers = N_WORKERS)
 #Write the pricing to a csv file for future reference
 pricing.to_csv(os.path.join("Acquisitions",CSV_LABEL + "_pricing.csv"),index=False,header=True,mode='a')
 logging.info(f'Pricing saved to {os.path.join("Acquisitions",CSV_LABEL + "_pricing.csv")}')
