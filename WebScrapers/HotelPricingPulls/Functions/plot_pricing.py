@@ -17,17 +17,26 @@ def read_pricing(df):
 def get_and_read_pricing(path):
     df = pd.read_csv(path)
     return read_pricing(df)
-def plot_pricing(df, prop, date = "most recent", figsize=(10, 6),save_graph = False,display = True):
+def plot_pricing(df, prop, date = "most recent", figsize=(10, 6),save_graph = False,display = True, long_graph = False):
     sns.set_theme(context='notebook', style='whitegrid')
     if date == "most recent":
         date = df['Report Date'].max()
     filtered = df[(df['HWV Property'] == prop) & (df['Report Date'] == date)]
 
     plt.figure(figsize=figsize)
-    g = sns.lineplot(x='Check-in Date', y='Price', hue='Competitor', data=filtered, marker='o', errorbar = None)    
+    g = sns.lineplot(
+        x='Check-in Date', 
+        y='Price', 
+        hue='Competitor',
+        data=filtered,
+        marker = None if long_graph else 'o', 
+        errorbar = None)    
     g.legend(title = "Competitor", loc = 'lower center', ncols = 6, bbox_to_anchor=(0.5, -0.35))
     # Format the x-axis to show dates more sparsely
-    plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=5))  # Show every 5th day
+    if long_graph:
+        plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval = 1))  # Show every 5th day
+    else:
+        plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval = 5))  # Show every 5th day
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
     # Rotate date labels for better readability
@@ -40,18 +49,23 @@ def plot_pricing(df, prop, date = "most recent", figsize=(10, 6),save_graph = Fa
         )
     if display:
         plt.show()
-def plot_pricing_facet(df,prop,date="most recent",save_graph = False, display = True):
+def plot_pricing_facet(df,prop,date="most recent",save_graph = False, display = True, long_graph = False):
     sns.set_theme(context='notebook',style = 'whitegrid')
     
     if date == "most recent":
         date = df['Report Date'].max()
     filtered = df[(df['HWV Property'] == prop) & (df['Report Date'] == date)]
     
-    g = sns.FacetGrid(filtered,col = 'Competitor',col_wrap = 5, height = 4, aspect = 1.5, sharey = False)
+    if long_graph:
+        g = sns.FacetGrid(filtered,col = 'Competitor',col_wrap = 3, height = 4, aspect = 1.5, sharey = False)
+    else:
+        g = sns.FacetGrid(filtered,col = 'Competitor',col_wrap = 5, height = 4, aspect = 1.5, sharey = False)
     g.map_dataframe(sns.lineplot, x='Check-in Date',y = 'Price', errorbar = None)
     g.set_titles(col_template='{col_name}',fontweight = 'bold')
     g.set_xlabels('Check in Date')
-    plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=5))  # Show every 5th day
+    
+    interval = mdates.MonthLocator(interval=1) if long_graph else mdates.DayLocator(interval=5)
+    plt.gca().xaxis.set_major_locator(interval)  # Show every 5th day
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
     # Rotate date labels for better readability
@@ -68,8 +82,8 @@ def plot_dow(df,prop,date='most recent',figsize = (10,6),save_graph = False,disp
     if date == "most recent":
         date = df['Report Date'].max()
     
-    report_start = date.strftime('%m/%d/%y')
-    report_end = (date + timedelta(days = 30)).strftime('%m/%d/%y')
+    report_start = df['Check-in Date'].min().strftime('%m/%d/%y')
+    report_end = df['Check-in Date'].max().strftime('%m/%d/%y')
     plt.figure(figsize=figsize)
     filtered = df[(df['HWV Property'] == prop) & (df['Report Date'] == date)]
     sns.barplot(data=filtered, x='Day of Week',y='Price',hue='Competitor')
@@ -85,8 +99,8 @@ def plot_room_types(df,prop,date='most recent',save_graph = False, display = Tru
         date = df['Report Date'].max()
     
     filtered = df[(df['HWV Property'] == prop) & (df['Report Date'] == date)]
-    report_start = date.strftime('%m/%d/%y')
-    report_end = (date + timedelta(days = 30)).strftime('%m/%d/%y')
+    report_start = df['Check-in Date'].min().strftime('%m/%d/%y')
+    report_end = df['Check-in Date'].max().strftime('%m/%d/%y')
     
     comps = filtered['Competitor'].unique()
     num_comps = len(comps)
@@ -141,9 +155,9 @@ def plot_compset_change(df,prop, date = "most recent",save_graph = False,display
     if display:
         plt.show()
         
-def get_graphs(df,prop,date = "most recent", figsize = (10,6),save_graphs = False,plot_changes = False, display = True):
-    plot_pricing(df,prop,date = date,figsize = figsize,save_graph = save_graphs, display = display)
-    plot_pricing_facet(df,prop,date = date,save_graph = save_graphs, display = display)
+def get_graphs(df,prop,date = "most recent", figsize = (10,6),save_graphs = False,plot_changes = False, display = True, long_graph = False):
+    plot_pricing(df,prop,date = date,figsize = figsize,save_graph = save_graphs, display = display, long_graph = long_graph)
+    plot_pricing_facet(df,prop,date = date,save_graph = save_graphs, display = display, long_graph = long_graph)
     plot_dow(df,prop,date = date,figsize = figsize,save_graph = save_graphs, display = display)
     plot_room_types(df,prop,date = date,save_graph = save_graphs, display = display)
     if plot_changes:

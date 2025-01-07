@@ -55,8 +55,6 @@ from ScraperFunctions.webdriver import WebDriver
 from ScraperFunctions.update_chromedriver import update_driver
 import Functions.hotel_scrape as hs
 from Functions.plot_pricing import get_graphs, read_pricing
-#Update the chromedriver on import?
-update_driver('win64')
 
 def get_starting_point(year):
     return f'https://www.booking.com/searchresults.html?ss=Honolulu&ssne=Honolulu&ssne_untouched=Honolulu&efdco=1&label=gen173nr-1FCAEoggI46AdIM1gEaIgCiAEBmAExuAEXyAEM2AEB6AEB-AECiAIBqAIDuALP0-G7BsACAdICJGQ2M2Y2YTBlLWUxZWQtNDUxNi1hMzdlLTM5NTIwNzkxMmE3ZdgCBeACAQ&aid=304142&lang=en-us&sb=1&src_elem=sb&src=index&dest_id=20030916&dest_type=city&checkin={year + 1}-01-01&checkout={year + 1}-01-02&group_adults=2&no_rooms=1&group_children=0'
@@ -134,6 +132,9 @@ def get_compset(Property_Name,TARGET_AREA,N_COMPS,HEADLESS):
         df.to_csv(OUTPUT_FILE,index = False, header = True)
         logging.info(f'Compset written to: {OUTPUT_FILE}')
         return df
+
+#Update the chromedriver on import?
+update_driver('win64')
 
 #COMPSET PATH FOR READING AND WRITING
 OUTPUT_FILE = os.path.join("Acquisitions",CSV_LABEL + "_compset.csv")
