@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import logging
+import concurrent.futures
 
 # Set up logging
 logging.basicConfig(
@@ -135,11 +136,11 @@ def clean_df(df):
     new_df.columns = ['Room Type','Guests','Price','Rating','Check-in Date']
     new_df['Report Date'] = datetime.today().strftime('%m-%d-%Y')
     return new_df
-def get_data(url_structure,days_out):
+def get_data(url_structure,days_out, prop):
     checkin_date = (today + timedelta(days = days_out)).strftime('%Y-%m-%d')
     checkout_date = (today + timedelta(days = days_out + 1)).strftime('%Y-%m-%d')
     new_url = update_booking_dates(url_structure,checkin_date,checkout_date)
-    logging.info(f'Gathering data for: {checkin_date}')
+    logging.info(f'Gathering data for: {prop}, {checkin_date}')
     df = extract_table(new_url,checkin_date)
     cleaned = clean_df(df)
     return cleaned
@@ -147,7 +148,7 @@ def get_n_days_out(url_structure,hwv_prop,competitor,n):
     df = pd.DataFrame()
     for i in range(1,n+1):
         try:
-            new_df = get_data(url_structure,i)
+            new_df = get_data(url_structure,i,competitor)
             df = expand_df(df,new_df)
         except requests.exceptions.ConnectionError or requests.exceptions.ChunkedEncodingError:
             logging.error("Request failed, continuing with iteration.")
@@ -155,14 +156,33 @@ def get_n_days_out(url_structure,hwv_prop,competitor,n):
     df['HWV Property'] = hwv_prop
     df['Competitor'] = competitor
     return df
-def get_n_days_from_csv(input_path,n):
+def get_n_days_from_csv(input_path, n, num_workers=5):
     output = pd.DataFrame()
+    memo = {}
     logging.info(f"Initializing data pull for: {today.strftime('%m-%d-%Y')}")
     input_df = pd.read_csv(input_path)
-    for _, row in input_df.iterrows():
+
+    def process_row(row):
         hwv_prop = row['HWV Prop']
         competitor = row['Competitor']
         url_structure = row['URL Structure']
         logging.info(f"Initializing Search for: {hwv_prop} - {competitor}")
-        output = expand_df(output,get_n_days_out(url_structure,hwv_prop,competitor,n = 30)) #get month out
+
+        if competitor in memo:
+            logging.info(f"Using memoized data for competitor: {competitor}")
+            return memo[competitor]
+        else:
+            df = get_n_days_out(url_structure, hwv_prop, competitor, n)
+            memo[competitor] = df
+            return df
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
+        futures = [executor.submit(process_row, row) for _, row in input_df.iterrows()]
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                result = future.result()
+                output = expand_df(output, result)
+            except Exception as e:
+                logging.error(f"Error processing row: {e}")
+
     return output
