@@ -14,6 +14,9 @@ def read_pricing(df):
     df['Check-in Week'] = df['Check-in Date'].dt.to_period('W').apply(lambda r: r.start_time)
     #Get only the most recent data
     return df
+def get_and_read_pricing(path):
+    df = pd.read_csv(path)
+    return read_pricing(df)
 def plot_pricing(df, prop, date = "most recent", figsize=(10, 6),save_graph = False,display = True):
     sns.set_theme(context='notebook', style='whitegrid')
     if date == "most recent":

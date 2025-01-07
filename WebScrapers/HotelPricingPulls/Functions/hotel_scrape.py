@@ -59,13 +59,30 @@ def is_correct_table(html_table_string):
     cols = df.columns
     return "Today's price" in cols
 def extract_table(target_url,date):
+    """The main function of the module, gets the table of pricing data (uncleaned) from
+    a website given a target url. Uses the mozilla agent from headers, with some other
+    settings to decrease the likelihood of request termination.
+
+    Args:
+        target_url (str): The link that will be used to send an HTML request
+        date (str): formatted date to be inserted into the table
+
+    Returns:
+        pd.DataFrame|None: Either the resulting table if one is found, otherwise returns None
+    """
     resp = requests.get(target_url, headers = headers)
     if resp.status_code != 200:
         logging.warning(f'Response status: {resp.status_code}')
     soup = BeautifulSoup(resp.text, 'html.parser')
     tables = soup.find_all('table')
-    rating = soup.find('div',class_ = 'ac4a7896c7').text.strip().split(' ')[1]
     
+    #The if split forces not to crash if no rating div is found (usually on bad HTML loads)
+    rating_div = soup.find('div',class_ = 'ac4a7896c7')
+    if rating_div is None:
+        rating = None
+    else:
+        rating = rating_div.text.strip().split(' ')[1]
+
     df = pd.DataFrame()
     for table in tables:
         if is_correct_table(table):
@@ -79,6 +96,7 @@ def extract_table(target_url,date):
         return 
     else:
         return df
+
 def find_type_name(df):
     #It's possible to get values like "room type" or "apartment type", this accounts for that variance
     headers = df.columns
