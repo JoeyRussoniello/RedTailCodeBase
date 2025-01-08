@@ -57,8 +57,14 @@ Here is an example of what your `.env` file should look like:
 
 ```properties
 CHROMEDRIVER_PATH=C:\path\to\your\chromedriver
+LOCAL_PATH_TO_SHAREPOINT="C:\Users\youruser\Red Tail Residential\"
 ```
-With an updating path to your chromedriver instead of the placeholder variable.
+With an updating path to your chromedriver, and local sharepoint reference instead of the placeholder variable.
+
+Both of these variables must be included in a `.env` file in order for the webscrapers to work properly
+1. CHROMEDRIVER_PATH: The local path to your downloaded repo. This will tell the programs where to download and update the chromedriver
+2. LOCAL_PATH_TO_SHAREPOINT: The local path to your Red Tail Residential Sharepoint File. This path is then used to save webscraping outputs to excel files in the comapny sharepoint, instead of just on a local machine.
+If these variables are not properly set up, you should get a helpful `FileExists` error from the program that tells you exactly which variable has been incorrectly setup
 #### Ignoring `.env` with git
 Make sure your `.env` file is listed in a `.gitignore` file to prevent it from being committed to the repository. Your `.gitignore` file should include
 ```properties

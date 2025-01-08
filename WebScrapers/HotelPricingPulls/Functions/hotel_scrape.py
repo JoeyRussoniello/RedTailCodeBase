@@ -134,6 +134,9 @@ def clean_df(df):
     
     new_df = pd.DataFrame([room_type,guests,prices,rating,date]).T
     new_df.columns = ['Room Type','Guests','Price','Rating','Check-in Date']
+    #Ensure numeric columns are treated appropriately
+    for col in ['Guests','Price','Rating']:
+        new_df[col] = pd.to_numeric(new_df[col],errors = 'coerce')
     new_df['Report Date'] = datetime.today().strftime('%m-%d-%Y')
     return new_df
 def get_data(url_structure,days_out, prop):
