@@ -2,15 +2,16 @@
 # Table of Contents
 1. [Overview](#overview)
 2. [Directory Structure](#directory-structure)
-3. [Configuration](#configuration)
-    a. [Setting up the `.env` file](#setting-up-the-env-file)
-    b. [Configuring a virutal environment](#setting-up-a-virtual-environment)
-4. [Usage](#usage)
+3. [Usage](#usage)
+4. [Configuration](#configuration)
+    1. [Setting up the `.env` file](#setting-up-the-env-file)
+    2. [Configuring a virutal environment](#setting-up-a-virtual-environment)
 5. [Contributing](#contributing)
 6. [Contact](#contact)
 
 ## Overview
 The Redtail project is designed to facilitate web scraping using Selenium and BeautifulSoup. The project is currently organized into two main directories: `ScraperFunctions` and `WebScrapers`, but will change as more reusable classes develop.
+#### **NOTE: All webscrapers were developed on a windows OS, and some have `\\` style paths left in the code. These are being gradually replaced with safer os.path.joins, but at the moment, some webscrapers may not function out-of-box on UNIX systems**
 
 ## Directory Structure
 
@@ -43,13 +44,26 @@ This directory contains individual web scraper modules, each designed to scrape 
 - `HotelPricingPulls`: A module designed to scrape pricing data from *booking.com*. It uses the requests module exclusively, with URL modification to send requests, without needing to render JS-loaded content
 - `...`: Additional scraper modules for other websites.
 
+## Usage
+To easily download all repo code onto your local machine use:
+```git
+git clone https://github.com/JoeyRussoniello/RedTailCodeBase
+cd RedTailCodeBase
+```
+Code will not run out-of-the-box unless the dependencies have all been successfully installed, and the `.env` file has properly configured. See [Configuration Instructions](#configuration) for details
+
+Each web scraper module can be run individually, and scheduled as tasks. For example, to run `MarketSurvey`, use the following command:
+
+```sh
+cd WebScrapers/MarketSurvey
+python main.py
+```
+
 ## Configuration
 
 ### Setting Up the `.env` File
 
 To configure the project, you need to create a `.env` file in the root directory of the project. This file will store environment-specific variables such as paths and credentials. 
-
-**Important:** Do not commit your `.env` file to the repository. It should be included in your `.gitignore` file to keep sensitive information secure.
 
 #### Example `.env` File
 
@@ -62,9 +76,12 @@ LOCAL_PATH_TO_SHAREPOINT="C:\Users\youruser\Red Tail Residential\"
 With an updating path to your chromedriver, and local sharepoint reference instead of the placeholder variable.
 
 Both of these variables must be included in a `.env` file in order for the webscrapers to work properly
-1. CHROMEDRIVER_PATH: The local path to your downloaded repo. This will tell the programs where to download and update the chromedriver
-2. LOCAL_PATH_TO_SHAREPOINT: The local path to your Red Tail Residential Sharepoint File. This path is then used to save webscraping outputs to excel files in the comapny sharepoint, instead of just on a local machine.
+1. **CHROMEDRIVER_PATH**: The local path to your downloaded repo. This will tell the programs where to download and update the chromedriver
+2. **LOCAL_PATH_TO_SHAREPOINT**: The local path to your Red Tail Residential Sharepoint File. This path is then used to save webscraping outputs to excel files in the comapny sharepoint, instead of just on a local machine.
 If these variables are not properly set up, you should get a helpful `FileExists` error from the program that tells you exactly which variable has been incorrectly setup
+
+**Important:** Do not commit your `.env` file to the repository. It should be included in your `.gitignore` file to keep sensitive information secure.
+
 #### Ignoring `.env` with git
 Make sure your `.env` file is listed in a `.gitignore` file to prevent it from being committed to the repository. Your `.gitignore` file should include
 ```properties
@@ -86,7 +103,7 @@ python -m venv .venv
 ```bash
 .\.venv\Scripts\activate
 ```
-- On macOS and Linux:
+- On macOS, linux, and UNIX systems:
 ```bash
 source .venv/bin/activate
 ```
@@ -95,23 +112,6 @@ With the virtual environment activated, install the required dependencies using 
 ```bash
 pip install -r requirements.txt
 ```
-
-## Usage
-To easily download all repo code onto your local machine use:
-```git
-git clone https://github.com/JoeyRussoniello/RedTailCodeBase
-cd RedTailCodeBase
-```
-Code will not run out-of-the-box unless the dependencies have all been successfully installed. See [Virutal Environment Setup Instructions](#setting-up-a-virtual-environment) for details
-
-Each web scraper module can be run individually, and scheduled as tasks. For example, to run `MarketSurvey`, use the following command:
-
-```sh
-cd WebScrapers/MarketSurvey
-python python.py
-```
-
-#### **NOTE: All webscrapers were developed on a windows OS, and some have `\\` style paths left in the code. These are being gradually replaced with safer os.path.joins, but at the moment, some webscrapers may not function out-of-box on UNIX systems**
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
