@@ -47,10 +47,11 @@ logging.basicConfig(
     ]
 )
 
+#Do the full web scrape
+output = hs.get_n_days_from_csv('hwv_compset.csv',30,num_workers = MAX_WORKERS)
 #Output results to csv (for static plots using plot_pricing module)
 args = parser.parse_args()
 if args.save_to_csv:
-    output = hs.get_n_days_from_csv('hwv_compset.csv',30,num_workers = MAX_WORKERS)
     output.to_csv(CSV_OUTPUT_PATH,index=False,header=False,mode='a')
     logging.info(f'Data saved to csv file {CSV_OUTPUT_PATH}')
 #And to excel (for power BI)
