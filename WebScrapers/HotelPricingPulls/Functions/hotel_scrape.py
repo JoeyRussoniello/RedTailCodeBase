@@ -161,7 +161,6 @@ def get_n_days_out(url_structure,hwv_prop,competitor,n):
     return df
 def get_n_days_from_csv(input_path, n, num_workers=5):
     output = pd.DataFrame()
-    memo = {}
     logging.info(f"Initializing data pull for: {today.strftime('%m-%d-%Y')}")
     input_df = pd.read_csv(input_path)
 
@@ -171,13 +170,8 @@ def get_n_days_from_csv(input_path, n, num_workers=5):
         url_structure = row['URL Structure']
         logging.info(f"Initializing Search for: {hwv_prop} - {competitor}")
 
-        if competitor in memo:
-            logging.info(f"Using memoized data for competitor: {competitor}")
-            return memo[competitor]
-        else:
-            df = get_n_days_out(url_structure, hwv_prop, competitor, n)
-            memo[competitor] = df
-            return df
+        df = get_n_days_out(url_structure, hwv_prop, competitor, n)
+        return df
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
         futures = [executor.submit(process_row, row) for _, row in input_df.iterrows()]
