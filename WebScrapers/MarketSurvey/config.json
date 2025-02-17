@@ -1,0 +1,11 @@
+{
+    "platform": "win64",    
+    "headless": true,    
+    "verbose": true,        
+    "ncomps": 5,      
+    "input_path": "Property Comps.csv",  
+    "rollup": true,           
+    "output_path": "C:\\Users\\mruss\\Red Tail Residential\\Corp-HWV - Revenue Management\\Residentail\\Market Survey (Template)\\Market Survey Excel Output.xlsx", 
+    "output_mode": "append",
+    "sheet_name": "Sheet1"
+}
