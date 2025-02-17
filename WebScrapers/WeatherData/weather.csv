@@ -35,3 +35,155 @@ Area,Weather,High Temparture (F),Low Temperature (F), Date
 "Avila Beach, CA",Clear,68,41,01/09/2025
 "Borrego Springs, CA",Clear,74,44,01/09/2025
 "Crescent, OR",Ice fog,45,27,01/09/2025
+"Grand Lake, CO",Clear,33,14,01/22/2025
+"Buellton, CA",Clear,76,33,01/22/2025
+"Kilauea, HI",Clear,78,64,01/22/2025
+"Honolulu, HI",Clear,77,64,01/22/2025
+"Solvang, CA",Clear,76,33,01/22/2025
+"Avila Beach, CA",Clear,74,42,01/22/2025
+"Borrego Springs, CA",Clear,74,37,01/22/2025
+"Crescent, OR",Clear,44,23,01/22/2025
+"Grand Lake, CO",Clear,44,18,01/24/2025
+"Buellton, CA",Passing clouds,74,35,01/24/2025
+"Kilauea, HI",Clear,78,61,01/24/2025
+"Honolulu, HI",Passing clouds,80,60,01/24/2025
+"Madison, NH",Overcast,30,6,01/24/2025
+"Solvang, CA",Passing clouds,74,35,01/24/2025
+"Avila Beach, CA",Clear,66,41,01/24/2025
+"Borrego Springs, CA",Clear,67,36,01/24/2025
+"Crescent, OR",Clear,37,19,01/24/2025
+"Grand Lake, CO",Light snow. Mostly cloudy,24,14,01/25/2025
+"Buellton, CA",Light rain. Fog,58,36,01/25/2025
+"Kilauea, HI",Clear,79,67,01/25/2025
+"Honolulu, HI",Passing clouds,81,68,01/25/2025
+"Madison, NH",Clear,28,1,01/25/2025
+"Solvang, CA",Light rain. Fog,58,36,01/25/2025
+"Avila Beach, CA",Overcast,56,45,01/25/2025
+"Borrego Springs, CA",Clear,70,40,01/25/2025
+"Crescent, OR",Clear,30,15,01/25/2025
+"Grand Lake, CO",Light snow. Low clouds,28,11,01/26/2025
+"Buellton, CA",Mostly cloudy,55,41,01/26/2025
+"Kilauea, HI",Passing clouds,78,70,01/26/2025
+"Honolulu, HI",Passing clouds,79,69,01/26/2025
+"Madison, NH",Clear,38,11,01/26/2025
+"Solvang, CA",Mostly cloudy,55,41,01/26/2025
+"Avila Beach, CA",Passing clouds,56,46,01/26/2025
+"Borrego Springs, CA",Mostly cloudy,61,45,01/26/2025
+"Crescent, OR",Clear,34,12,01/26/2025
+"Grand Lake, CO",Clear,46,18,01/27/2025
+"Buellton, CA",Passing clouds,62,35,01/27/2025
+"Kilauea, HI",Light rain. Overcast,76,66,01/27/2025
+"Honolulu, HI",Partly cloudy,74,67,01/27/2025
+"Madison, NH",Clear,37,17,01/27/2025
+"Solvang, CA",Passing clouds,62,35,01/27/2025
+"Avila Beach, CA",Clear,60,39,01/27/2025
+"Borrego Springs, CA",Mostly cloudy,62,42,01/27/2025
+"Crescent, OR",Clear,44,16,01/27/2025
+"Grand Lake, CO",Clear,47,23,01/28/2025
+"Buellton, CA",Clear,65,32,01/28/2025
+"Kilauea, HI",Passing clouds,73,64,01/28/2025
+"Honolulu, HI",Passing clouds,74,64,01/28/2025
+"Madison, NH",Overcast,32,16,01/28/2025
+"Solvang, CA",Clear,65,32,01/28/2025
+"Avila Beach, CA",Clear,62,36,01/28/2025
+"Borrego Springs, CA",Ice fog,66,41,01/28/2025
+"Crescent, OR",Clear,46,19,01/28/2025
+"Grand Lake, CO",Clear,55,31,01/31/2025
+"Buellton, CA",Overcast,64,38,01/31/2025
+"Kilauea, HI",Passing clouds,81,67,01/31/2025
+"Honolulu, HI",Passing clouds,80,69,01/31/2025
+"Madison, NH",Overcast,40,16,01/31/2025
+"Solvang, CA",Overcast,64,38,01/31/2025
+"Avila Beach, CA",Overcast,60,41,01/31/2025
+"Borrego Springs, CA",Clear,70,41,01/31/2025
+"Crescent, OR",Overcast,47,39,01/31/2025
+"Grand Lake, CO",Clear,53,36,02/01/2025
+"Buellton, CA",Overcast,71,40,02/01/2025
+"Kilauea, HI",Clear,78,63,02/01/2025
+"Honolulu, HI",Passing clouds,79,66,02/01/2025
+"Madison, NH",Fog,31,4,02/01/2025
+"Solvang, CA",Overcast,71,40,02/01/2025
+"Avila Beach, CA",Clear,65,45,02/01/2025
+"Borrego Springs, CA",Clear,78,45,02/01/2025
+"Crescent, OR",Overcast,44,28,02/01/2025
+"Grand Lake, CO",Clear,65,37,02/03/2025
+"Buellton, CA",Clear,66,40,02/03/2025
+"Kilauea, HI",Passing clouds,79,66,02/03/2025
+"Honolulu, HI",Passing clouds,79,64,02/03/2025
+"Madison, NH",Light snow. Overcast,41,17,02/03/2025
+"Solvang, CA",Clear,66,40,02/03/2025
+"Avila Beach, CA",Fog,60,48,02/03/2025
+"Borrego Springs, CA",Clear,84,51,02/03/2025
+"Crescent, OR",Clear,34,25,02/03/2025
+"Grand Lake, CO",Low clouds,54,26,02/04/2025
+"Buellton, CA",Clear,60,44,02/04/2025
+"Kilauea, HI",Passing clouds,77,66,02/04/2025
+"Honolulu, HI",Passing clouds,76,66,02/04/2025
+"Madison, NH",Overcast,37,14,02/04/2025
+"Solvang, CA",Clear,60,44,02/04/2025
+"Avila Beach, CA",Clear,62,52,02/04/2025
+"Borrego Springs, CA",Clear,81,54,02/04/2025
+"Crescent, OR",Low clouds,33,20,02/04/2025
+"Grand Lake, CO",Clear,61,28,02/05/2025
+"Buellton, CA",Light rain. Fog,64,51,02/05/2025
+"Kilauea, HI",Passing clouds,78,64,02/05/2025
+"Honolulu, HI",Partly cloudy,77,67,02/05/2025
+"Madison, NH",Clear,23,3,02/05/2025
+"Solvang, CA",Light rain. Fog,64,51,02/05/2025
+"Avila Beach, CA",Light rain. Fog,63,49,02/05/2025
+"Borrego Springs, CA",Clear,79,52,02/05/2025
+"Crescent, OR",Passing clouds,34,18,02/05/2025
+"Grand Lake, CO",Clear,63,33,02/07/2025
+"Buellton, CA",Light rain. Fog,61,42,02/07/2025
+"Kilauea, HI",Clear,80,71,02/07/2025
+"Honolulu, HI",Passing clouds,79,69,02/07/2025
+"Madison, NH",Passing clouds,33,18,02/07/2025
+"Solvang, CA",Light rain. Fog,61,42,02/07/2025
+"Avila Beach, CA",Mostly cloudy,60,48,02/07/2025
+"Borrego Springs, CA",Passing clouds,74,56,02/07/2025
+"Crescent, OR",Light snow. Ice fog,35,20,02/07/2025
+"Grand Lake, CO",Passing clouds,40,21,02/09/2025
+"Buellton, CA",Clear,68,34,02/09/2025
+"Kilauea, HI",Passing clouds,80,69,02/09/2025
+"Honolulu, HI",Passing clouds,82,69,02/09/2025
+"Madison, NH",Light snow. Overcast,33,15,02/09/2025
+"Solvang, CA",Clear,68,34,02/09/2025
+"Avila Beach, CA",Clear,65,42,02/09/2025
+"Borrego Springs, CA",Clear,76,50,02/09/2025
+"Crescent, OR",Clear,35,18,02/09/2025
+"Grand Lake, CO",Clear,38,3,02/13/2025
+"Buellton, CA",Overcast,60,49,02/13/2025
+"Kilauea, HI",Clear,82,67,02/13/2025
+"Honolulu, HI",Passing clouds,83,65,02/13/2025
+"Madison, NH",Light snow. Overcast,36,23,02/13/2025
+"Solvang, CA",Overcast,60,49,02/13/2025
+"Avila Beach, CA",Light rain. Fog,61,54,02/13/2025
+"Borrego Springs, CA",Fog,70,52,02/13/2025
+"Crescent, OR",Clear,31,12,02/13/2025
+"Grand Lake, CO",Clear,54,22,02/14/2025
+"Buellton, CA",Light rain. Fog,59,42,02/14/2025
+"Kilauea, HI",Passing clouds,81,69,02/14/2025
+"Honolulu, HI",Partly cloudy,82,69,02/14/2025
+"Madison, NH",Clear,28,15,02/14/2025
+"Solvang, CA",Light rain. Fog,59,42,02/14/2025
+"Avila Beach, CA",Mostly cloudy,60,46,02/14/2025
+"Borrego Springs, CA",Overcast,68,53,02/14/2025
+"Crescent, OR",Overcast,41,21,02/14/2025
+"Grand Lake, CO",Ice fog,33,18,02/15/2025
+"Buellton, CA",Sunny,69,38,02/15/2025
+"Kilauea, HI",Passing clouds,82,70,02/15/2025
+"Honolulu, HI",Clear,83,68,02/15/2025
+"Madison, NH",Scattered clouds,28,6,02/15/2025
+"Solvang, CA",Sunny,69,38,02/15/2025
+"Avila Beach, CA",Sunny,67,45,02/15/2025
+"Borrego Springs, CA",Fog,74,48,02/15/2025
+"Crescent, OR",Overcast,42,24,02/15/2025
+"Grand Lake, CO",Clear,36,18,02/17/2025
+"Buellton, CA",Light rain. Fog,71,40,02/17/2025
+"Kilauea, HI",Light rain. Overcast,81,73,02/17/2025
+"Honolulu, HI",Passing clouds,82,71,02/17/2025
+"Madison, NH",Overcast,27,13,02/17/2025
+"Solvang, CA",Light rain. Fog,71,40,02/17/2025
+"Avila Beach, CA",Fog,68,46,02/17/2025
+"Borrego Springs, CA",Clear,83,55,02/17/2025
+"Crescent, OR",Mostly cloudy,44,32,02/17/2025
