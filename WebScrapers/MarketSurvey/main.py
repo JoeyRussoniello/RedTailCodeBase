@@ -1,11 +1,22 @@
 """Runs the market survey based on parameters given in config.json"""
 import json, os, sys #Import basic libraries for file reading and system operations
-
+from dotenv import load_dotenv
 #Add the parent directory to the path so that the modules can be imported
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from ScraperFunctions.update_chromedriver import update_driver
 from survey import MarketSurvey
+
+load_dotenv()
+SHAREPOINT_PATH = os.getenv('LOCAL_PATH_TO_SHAREPOINT', None) 
+
+OUTPUT_PATH = os.path.join(
+    SHAREPOINT_PATH,
+    'Corp-HWV - Revenue Management',
+    'Residentail',
+    'Market Survey (Template)',
+    'Market Survey Excel Output.xlsx'
+)
 
 #Get variables from the config file
 with open("config.json", "r",encoding = 'utf-8') as r:
@@ -18,12 +29,12 @@ VERBOSE = config['verbose']
 NCOMPS = config['ncomps']
 INPUT_PATH = config['input_path']
 ROLLUP = config['rollup']
-OUTPUT_PATH = config['output_path']
 OUTPUT_MODE = config['output_mode']
 SHEET_NAME = config['sheet_name']
 
 #Update the chrome drivers
 update_driver(PLATFORM)
+
 
 #Perform Market Survey From Input Links
 survey = MarketSurvey(headless = HEADLESS, verbose = VERBOSE, ncomps = NCOMPS)

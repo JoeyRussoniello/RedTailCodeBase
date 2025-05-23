@@ -7,6 +7,7 @@ import re
 import pandas as pd
 import numpy as np
 import os
+from dotenv import load_dotenv
 #Webscraper selenium Imports
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -29,7 +30,10 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-CHROMEDRIVER_PATH = r"C:\Users\mruss\projects\redtail\chromedriver.exe"
+
+load_dotenv()
+CHROMEDRIVER_PATH = os.path.join(os.getenv('CHROMEDRIVER_PATH', None),"chromedriver.exe")
+
 logging.info(f"Chromedriver path: {CHROMEDRIVER_PATH}")
 
 def not_containing(l, filterchar):
